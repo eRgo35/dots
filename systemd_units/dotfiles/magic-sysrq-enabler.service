@@ -1,0 +1,15 @@
+[Unit]
+Description=Magic Sysrq key enabler
+
+Wants=network.target
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/magic-sysrq-enable
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,71 @@
+#!/bin/zsh
+
+# Easier Navigation
+alias cd..="cd .."
+
+# Colors
+alias ls="command exa"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# List files
+alias l="exa -G --icons"
+alias ll="exa -l --icons"
+alias lg="exa -lG"
+alias lall="exa -lahF --icons --git"
+alias lalg="exa -laGhF --icons --git"
+alias latree="exa -laGghHT --git --icons"
+alias la="exa -la --git --icons"
+
+# List only directories
+alias lsd="exa -laD"
+
+alias cls="clear"
+alias df="df -ahiT --total"
+alias userlist="cut -d: -f1 /etc/passwd"
+alias free="free -mt"
+alias du="du -ach | sort -h"
+alias ps="ps auxf"
+
+# Enable aliases to be sudo’ed
+alias sudo='doas '
+
+alias sudo="doas"
+
+# Get week number
+alias week='date +%V'
+
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
+# Dice for the undecided
+alias dice='echo $[ 1 + $RANDOM % 6 ]'
+
+# Canonical hex dump; some systems have this symlinked
+command -v hd > /dev/null || alias hd="hexdump -C"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+
+alias path='echo -e ${PATH//:/\\n}'				#Print each PATH entry on a separate line
+alias mkdir='mkdir -pv'						#Intuitive mkdir
+# get top process eating memory
+alias psmem='ps -e -orss=,args= | sort -b -k1 -nr'
+alias psmem10='ps -e -orss=,args= | sort -b -k1 -nr | head -10'
+# get top process eating cpu if not work try excute : export LC_ALL='C'
+alias pscpu='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1,1n -nr'
+alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1,1n -nr | head -10'
+# top10 of the history
+alias hist10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
+# Default xclip to use Ctrl-c/Ctrl-v clipboard
+alias xclip="xclip -selection c"
+alias :q="exit"
