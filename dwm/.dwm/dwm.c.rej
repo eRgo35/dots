@@ -1,34 +1,93 @@
---- dwm.c	2019-02-02 04:55:28.000000000 -0800
-+++ dwm.c	2019-07-12 11:47:37.726846244 -0700
-@@ -171,12 +179,15 @@ static void detachstack(Client *c);
- static Monitor *dirtomon(int dir);
- static void drawbar(Monitor *m);
- static void drawbars(void);
-+static void drawtab(Monitor *m);
-+static void drawtabs(void);
- static void enternotify(XEvent *e);
- static void expose(XEvent *e);
+--- dwm.c
++++ dwm.c
+@@ -118,6 +119,8 @@ struct Monitor {
+ 	int nmaster;
+ 	int num;
+ 	int by;               /* bar geometry */
++	int btw;              /* width of tasks portion of bar */
++	int bt;               /* number of tasks */
+ 	int mx, my, mw, mh;   /* screen size */
+ 	int wx, wy, ww, wh;   /* window area  */
+ 	unsigned int seltags;
+@@ -125,6 +128,7 @@ struct Monitor {
+ 	unsigned int tagset[2];
+ 	int showbar;
+ 	int topbar;
++	int hidsel;
+ 	Client *clients;
+ 	Client *sel;
+ 	Client *stack;
+@@ -169,13 +173,17 @@ static void expose(XEvent *e);
  static void focus(Client *c);
  static void focusin(XEvent *e);
  static void focusmon(const Arg *arg);
- static void focusstack(const Arg *arg);
-+static void focuswin(const Arg* arg);
+-static void focusstack(const Arg *arg);
++static void focusstackvis(const Arg *arg);
++static void focusstackhid(const Arg *arg);
++static void focusstack(int inc, int vis);
+ static Atom getatomprop(Client *c, Atom prop);
  static int getrootptr(int *x, int *y);
  static long getstate(Window w);
  static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
-@@ -249,6 +261,7 @@ static char stext[256];
- static int screen;
- static int sw, sh;           /* X display screen geometry width, height */
- static int bh, blw = 0;      /* bar geometry */
-+static int th = 0;           /* tab bar geometry */
- static int lrpad;            /* sum of left and right padding for text */
- static int (*xerrorxlib)(Display *, XErrorEvent *);
- static unsigned int numlockmask = 0;
-@@ -1697,6 +1852,7 @@ setup(void)
- 		die("no fonts could be loaded.");
- 	lrpad = drw->fonts->h;
- 	bh = drw->fonts->h + 2;
-+	th = bh;
- 	updategeom();
- 	/* init atoms */
- 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
+ static void grabbuttons(Client *c, int focused);
+ static void grabkeys(void);
++static void hide(const Arg *arg);
++static void hidewin(Client *c);
+ static void incnmaster(const Arg *arg);
+ static void keypress(XEvent *e);
+ static void killclient(const Arg *arg);
+@@ -445,10 +457,25 @@ buttonpress(XEvent *e)
+ 			arg.ui = 1 << i;
+ 		} else if (ev->x < x + blw)
+ 			click = ClkLtSymbol;
+-		else if (ev->x > selmon->ww - (int)TEXTW(stext))
++		/* 2px right padding */
++		else if (ev->x > selmon->ww - TEXTW(stext) + lrpad - 2)
+ 			click = ClkStatusText;
+-		else
+-			click = ClkWinTitle;
++		else {
++			x += blw;
++			c = m->clients;
++
++			if (c) {
++				do {
++					if (!ISVISIBLE(c))
++						continue;
++					else
++						x +=(1.0 / (double)m->bt) * m->btw;
++				} while (ev->x > x && (c = c->next));
++
++				click = ClkWinTitle;
++				arg.v = c;
++			}
++		}
+ 	} else if ((c = wintoclient(ev->window))) {
+ 		focus(c);
+ 		restack(selmon);
+@@ -458,7 +485,7 @@ buttonpress(XEvent *e)
+ 	for (i = 0; i < LENGTH(buttons); i++)
+ 		if (click == buttons[i].click && buttons[i].func && buttons[i].button == ev->button
+ 		&& CLEANMASK(buttons[i].mask) == CLEANMASK(ev->state))
+-			buttons[i].func(click == ClkTagBar && buttons[i].arg.i == 0 ? &arg : &buttons[i].arg);
++			buttons[i].func((click == ClkTagBar || click == ClkWinTitle) && buttons[i].arg.i == 0 ? &arg : &buttons[i].arg);
+ }
+ 
+ void
+@@ -1343,6 +1456,16 @@ propertynotify(XEvent *e)
+ void
+ quit(const Arg *arg)
+ {
++	// fix: reloading dwm keeps all the hidden clients hidden
++	Monitor *m;
++	Client *c;
++	for (m = mons; m; m = m->next) {
++		if (m) {
++			for (c = m->stack; c; c = c->next)
++				if (c && HIDDEN(c)) showwin(c);
++		}
++	}
++
+ 	running = 0;
+ }
+ 
