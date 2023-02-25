@@ -156,9 +156,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 11";
 #else
-static const char *fonts[]               = { "SauceCodePro Nerd Font Mono:size=11:antialias=true", "monospace:size=11:antialias=true" };
+static const char *fonts[]               = { "SauceCodePro Nerd Font:size=11:antialias=true", "monospace:size=11:antialias=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "SauceCodePro Nerd Font Mono:size=11:antialias=true";
+static const char dmenufont[]            = "SauceCodePro Nerd Font:size=11:antialias=true";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -848,6 +848,7 @@ static const char *xkb_layouts[]  = {
 #if !NODMENU_PATCH
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
+static const char *rofidruncmd[] = {"rofi", "-show", "drun", NULL};
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
@@ -1039,6 +1040,7 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	#endif // BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
+	{ MODKEY,             XK_q,          killclient,             {0} },
 	#if KILLUNSEL_PATCH
 	{ MODKEY|ShiftMask,             XK_x,          killunsel,              {0} },
 	#endif // KILLUNSEL_PATCH
@@ -1078,7 +1080,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod5Mask|Mod1Mask,     XK_Tab,        rotatelayoutaxis,       {.i = -4 } },   /* flextile, 4 = secondary stack axis */
 	{ MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 	#endif // FLEXTILE_DELUXE_LAYOUT
-	{ MODKEY,                       XK_space,      setlayout,              {0} },
+	{ MODKEY,                       XK_space,      spawn,                  {.v = rofidruncmd}},
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
 	#if MAXIMIZE_PATCH
 	{ MODKEY|ControlMask|ShiftMask, XK_h,          togglehorizontalmax,    {0} },

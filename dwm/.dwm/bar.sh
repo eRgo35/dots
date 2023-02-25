@@ -21,8 +21,8 @@ darkblue=#83bae8
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-  printf "^c$black^ ^b$green^ CPU"
-  printf "^c$white^ ^b$grey^ $cpu_val"
+  printf "^c$black^ ^b$green^ 󰇄 "
+  printf "^c$black^ ^b$green^$cpu_val"
 }
 
 pkg_updates() {
@@ -31,9 +31,9 @@ pkg_updates() {
   # updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
 
   if [ -z "$updates" ]; then
-    printf "  ^c$green^    Fully Updated"
+    printf "  ^c$blue^    Fully Updated"
   else
-    printf "  ^c$green^    $updates"" updates"
+    printf "  ^c$blue^    $updates"" updates"
   fi
 }
 
@@ -48,8 +48,8 @@ brightness() {
 }
 
 mem() {
-  printf "^c$blue^^b$black^  "
-  printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+  printf "^c$black^^b$red^  "
+  printf "^c$black^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
@@ -60,8 +60,8 @@ wlan() {
 }
 
 clock() {
-	printf "^c$black^ ^b$darkblue^ 󱑆 "
-	printf "^c$black^^b$blue^ $(date '+%H:%M')  "
+	printf "^c$black^ ^b$blue^ 󱑁 "
+	printf "^c$black^^b$blue^ $(date '+%r') "
 }
 
 while true; do
@@ -70,5 +70,5 @@ while true; do
   interval=$((interval + 1))
 
   # sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(cpu) $(mem) $(clock)"
+  sleep 1 && xsetroot -name "$(cpu) $(mem) $(clock)"
 done
