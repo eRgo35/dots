@@ -62,5 +62,8 @@ nitrogen --restore &
 # notification daemon
 dunst &
 
+# status bar
+# $HOME/.dwm/bar.sh &
+
 # start dwm
 exec dwm
