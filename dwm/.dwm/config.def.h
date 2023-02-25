@@ -6,37 +6,40 @@ static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 32;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
 /*  monocle mode in the presence of several windows.                        */
 /*  Modes after showtab_nmodes are disabled.                                */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
-static const int showtab			= showtab_auto;        /* Default tab bar show mode */
-static const int toptab				= False;               /* False means bottom tab bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#005577";
-static char selbgcolor[]            = "#005577";
-static char termcol0[] = "#000000"; /* black   */
-static char termcol1[] = "#ff0000"; /* red     */
-static char termcol2[] = "#33ff00"; /* green   */
-static char termcol3[] = "#ff0099"; /* yellow  */
-static char termcol4[] = "#0066ff"; /* blue    */
-static char termcol5[] = "#cc00ff"; /* magenta */
-static char termcol6[] = "#00ffff"; /* cyan    */
-static char termcol7[] = "#d0d0d0"; /* white   */
-static char termcol8[]  = "#808080"; /* black   */
-static char termcol9[]  = "#ff0000"; /* red     */
-static char termcol10[] = "#33ff00"; /* green   */
-static char termcol11[] = "#ff0099"; /* yellow  */
-static char termcol12[] = "#0066ff"; /* blue    */
-static char termcol13[] = "#cc00ff"; /* magenta */
-static char termcol14[] = "#00ffff"; /* cyan    */
-static char termcol15[] = "#ffffff"; /* white   */
+static const int showtab			      = showtab_never;        /* Default tab bar show mode */
+static const int toptab				      = True;               /* False means bottom tab bar */
+static const char *fonts[]          = { 
+	"SauceCodePro Nerd Font Mono:size=12:antialias=true:autohint=true",
+	"monospace:size=12:antialias=true:autohint=true",
+};
+static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12:antialias=true:autohint=true";
+static char termcol0[]              = "#181926"; /* black   */
+static char termcol1[]              = "#ed8796"; /* red     */
+static char termcol2[]              = "#a6da95"; /* green   */
+static char termcol3[]              = "#eed49f"; /* yellow  */
+static char termcol4[]              = "#8aadf4"; /* blue    */
+static char termcol5[]              = "#f5bde6"; /* magenta */
+static char termcol6[]              = "#8bd5ca"; /* cyan    */
+static char termcol7[]              = "#cad3f5"; /* white   */
+static char termcol8[]              = "#1e2030"; /* black   */
+static char termcol9[]              = "#ee99a0"; /* red     */
+static char termcol10[]             = "#a6da95"; /* green   */
+static char termcol11[]             = "#eed49f"; /* yellow  */
+static char termcol12[]             = "#8aadf4"; /* blue    */
+static char termcol13[]             = "#f5bde6"; /* magenta */
+static char termcol14[]             = "#8bd5ca"; /* cyan    */
+static char termcol15[]             = "#f4dbd6"; /* white   */
+static char normbgcolor[]           = "#24273a";
+static char normbordercolor[]       = "#363a4f";
+static char normfgcolor[]           = "#cad3f5";
+static char selfgcolor[]            = "#ed8796";
+static char selbordercolor[]        = "#7dc4e4";
+static char selbgcolor[]            = "#24273a";
 static char *termcolor[] = {
   termcol0,
   termcol1,
@@ -85,9 +88,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
+	{ "HHH",      grid },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "HHH",      grid },
 	{ "TTT",      bstack },
   { "===",      bstackhoriz },
 };
@@ -105,10 +108,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", normbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "--option", "window.dimensions.columns=120", "--option", "window.dimensions.lines=34", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */

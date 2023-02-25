@@ -29,9 +29,7 @@ alias du="du -ach | sort -h"
 alias ps="ps auxf"
 
 # Enable aliases to be sudo’ed
-alias sudo='doas '
-
-alias sudo="doas"
+alias sudo='sudo '
 
 # Get week number
 alias week='date +%V'
