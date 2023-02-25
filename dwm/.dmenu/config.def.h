@@ -20,7 +20,7 @@ static int min_width = 500;                 /* minimum width when centered */
 #endif // CENTER_PATCH
 #if BARPADDING_PATCH
 static const int vertpad = 10;              /* vertical padding of bar */
-static const int sidepad = 10;              /* horizontal padding of bar */
+static const int sidepad = 30;              /* horizontal padding of bar */
 #endif // BARPADDING_PATCH
 #if RESTRICT_RETURN_PATCH
 static int restrict_return = 0;             /* -1 option; if 1, disables shift-return and ctrl-return */
@@ -35,6 +35,7 @@ static char *fonts[] =
 static const char *fonts[] =
 #endif // XRESOURCES_PATCH
 {
+	"SauceCodePro Nerd Font Mono:size=11:antialias=true"
 	"monospace:size=10"
 };
 #endif // PANGO_PATCH
@@ -120,7 +121,7 @@ static unsigned int lines      = 0;
 static unsigned int columns    = 0;
 #endif // GRID_PATCH
 #if LINE_HEIGHT_PATCH
-static unsigned int lineheight = 0;         /* -h option; minimum height of a menu line     */
+static unsigned int lineheight = 32;         /* -h option; minimum height of a menu line     */
 static unsigned int min_lineheight = 8;
 #endif // LINE_HEIGHT_PATCH
 #if NAVHISTORY_PATCH
