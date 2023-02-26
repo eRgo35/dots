@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
@@ -201,6 +203,19 @@ static char urgfgcolor[]                 = "#bbbbbb";
 static char urgbgcolor[]                 = "#222222";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
+
+static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-3%", NULL};
+static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+3%", NULL};
+static const char *mutemic[] = {"/usr/bin/pactl", "set-source-mute", "0", "toggle", NULL};
+static const char *downbrt[] = {"xbacklight", "-dec", "5", NULL};
+static const char *upbrt[] = {"xbacklight", "-inc", "5", NULL};
+static const char *displ[] = {"arandr", NULL};
+static const char *wlan[] = {"alacritty", "-e", "nmtui", NULL};
+static const char *tools[] = {"lxappearance"};
+static const char *search[] = {"rofi", "-show", "drun", NULL};
+// static const char *launcha[] = {alttabstart};
+static const char *explorer[] = {"nemo", NULL};
 
 #if RENAMED_SCRATCHPADS_PATCH
 static char scratchselfgcolor[]          = "#FFF7D4";
@@ -892,6 +907,19 @@ static const Key on_empty_keys[] = {
 
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
+	{0, XF86XK_AudioMute, spawn, {.v = mutevol}},
+  {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol}},
+  {0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol}},
+  {0, XF86XK_AudioMicMute, spawn, {.v = mutemic}},
+  {0, XF86XK_MonBrightnessDown, spawn, {.v = downbrt}},
+  {0, XF86XK_MonBrightnessUp, spawn, {.v = upbrt}},
+  {0, XF86XK_Display, spawn, {.v = displ}},
+  {0, XF86XK_WLAN, spawn, {.v = wlan}},
+  {0, XF86XK_Tools, spawn, {.v = tools}},
+  {0, XF86XK_Search, spawn, {.v = search}},
+  {0, XF86XK_LaunchA, alttabstart, {0}},
+  {0, XF86XK_Explorer, spawn, {.v = explorer}},
+
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
