@@ -78,7 +78,7 @@ flameshot &
 easyeffects --gapplication-service &
 
 # status bar
-# $HOME/.dwm/bar.sh &
+$HOME/.dwm/bar.sh &
 
 # start dwm
 exec dwm
