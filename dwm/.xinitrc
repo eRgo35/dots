@@ -51,6 +51,7 @@ xset s noblank &
 xset s noexpose &
 xset c on &
 xset -dpms &
+xset s 1800 &
 
 # auths
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
