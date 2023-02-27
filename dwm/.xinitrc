@@ -56,14 +56,29 @@ xset -dpms &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 gnome-keyring-daemon &
 
+## Map super key to trigger rofi when used alone
+xcape -e 'Super_L=Super_L|Shift_L|space' &
+
 # wallpapers
 nitrogen --restore &
+
+## Set screen locker
+xss-lock -v -- betterlockscreen -l &
+
+## Desktop portal
+/usr/lib/xdg-desktop-portal-gtk &
 
 # notification daemon
 dunst &
 
+## Screenshot daemon
+flameshot &
+
+# Easyeffects daemon
+easyeffects --gapplication-service &
+
 # status bar
-$HOME/.dwm/bar.sh &
+# $HOME/.dwm/bar.sh &
 
 # start dwm
 exec dwm
