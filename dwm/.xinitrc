@@ -46,12 +46,12 @@ xset fp rehash &
 fc-cache -fv &
 
 # powersaving options
-xset s off &
-xset s noblank &
-xset s noexpose &
+# xset s off &
+# xset s noblank &
+# xset s noexpose &
 xset c on &
 xset -dpms &
-xset s 1800 &
+xset s 900 &
 
 # auths
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
