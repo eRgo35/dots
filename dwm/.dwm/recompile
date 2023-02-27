@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rm -f ./config.h
+rm -f ./config.h ./patches.h
 sudo make clean install

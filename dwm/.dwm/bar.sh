@@ -37,6 +37,23 @@ base=#24273a
 mantle=#1e2030
 crust=#181926
 
+pulse () {
+  VOL=$(pamixer --get-volume)
+  STATE=$(pamixer --get-mute)
+  
+  printf "%s" "$SEP1"
+  if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
+      printf "AMUT%%"
+  elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
+      printf "A%s%%" "$VOL"
+  elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
+      printf "A%s%%" "$VOL"
+  else
+      printf "A%s%%" "$VOL"
+  fi
+  printf "%s\n" "$SEP2"
+}
+
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
@@ -44,30 +61,18 @@ cpu() {
   printf "^c$crust^ ^b$yellow^$cpu_val"
 }
 
-pkg_updates() {
-  #updates=$(doas xbps-install -un | wc -l) # void
-  updates=$(checkupdates 2>/dev/null | wc -l) # arch
-  # updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
-
-  if [ -z "$updates" ]; then
-    printf "  ^c$blue^    Fully Updated"
-  else
-    printf "  ^c$blue^    $updates"" updates"
-  fi
-}
-
 battery() {
-  capacity_0="$(cat /sys/class/power_supply/BAT0/capacity)"
-  capacity_1="$(cat /sys/class/power_supply/BAT1/capacity)"
+  # capacity_0="$(cat /sys/class/power_supply/BAT0/capacity)"
+  # capacity_1="$(cat /sys/class/power_supply/BAT1/capacity)"
 
-  capacity=$(((capacity_0 + capacity_1) / 2))
+  # capacity=$(((capacity_0 + capacity_1) / 2))
+  capacity=100
   
-  printf "^c$crust^ ^b$red^  ^b$red^ $capacity"
+  printf " B$capacity%% "
 }
 
 brightness() {
-  printf "^c$crust^^b$peach^   "
-  printf "^c$crust^^b$peach^%.0f\n" $(cat /sys/class/backlight/*/brightness)
+  printf "L%.0f%%" $(cat /sys/class/backlight/*/brightness)
 }
 
 mem() {
@@ -83,8 +88,19 @@ wlan() {
 }
 
 clock() {
-	printf "^c$crust^ ^b$mauve^ 󱑁 "
-	printf "^c$crust^ ^b$mauve^$(date '+%r')  "
+	printf " $(date '+%I:%M %P') "
+}
+
+today() {
+	printf " $(date '+%b %e') "
+}
+
+net() {
+  if nc -zw1 google.com 443; then
+    printf "^c$crust^^b$green^  i  "
+  else
+    printf "^c$crust^^b$red^  !  "
+  fi
 }
 
 while true; do
@@ -93,6 +109,7 @@ while true; do
   # interval=$((interval + 1))
 
   # sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  # sleep 1 && xsetroot -name "$(cpu) $(mem) $(clock)"
+  # sleep 1 && xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
+  # sleep 1 && xsetroot -name "^c$text^^b$surface0^  $(brightness)  ^b$base^  $(battery)  $(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+  sleep 1 && xsetroot -name "^c$text^$(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
 done
