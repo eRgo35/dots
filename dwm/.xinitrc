@@ -78,6 +78,19 @@ flameshot &
 # Easyeffects daemon
 easyeffects --gapplication-service &
 
+## Telegram daemon
+telegram-desktop -startintray &
+
+## Caffeine-ng
+caffeine >/dev/null 2>&1 &
+
+## Ulauncher
+sleep 3 ;
+ulauncher --hide-window >/dev/null 2>&1 &
+
+## THINKPAD-SPECIFIC 
+hash dockd && dockd --daemon &
+
 # status bar
 $HOME/.dwm/bar.sh &
 

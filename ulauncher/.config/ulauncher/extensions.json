@@ -1,0 +1,72 @@
+{
+    "com.github.tchar.ulauncher-albert-calculate-anything": {
+        "id": "com.github.tchar.ulauncher-albert-calculate-anything",
+        "url": "https://github.com/tchar/ulauncher-albert-calculate-anything",
+        "updated_at": "2023-02-28T16:06:23.609790",
+        "last_commit": "ee0903174c8b87cd1f7c3b6c1acef10702547507",
+        "last_commit_time": "2021-08-12T06:39:56"
+    },
+    "com.github.brpaz.ulauncher-faker": {
+        "id": "com.github.brpaz.ulauncher-faker",
+        "url": "https://github.com/brpaz/ulauncher-faker",
+        "updated_at": "2023-02-28T16:10:34.834967",
+        "last_commit": "58832c94acc671a9f603ea7fbf5d4405110bb902",
+        "last_commit_time": "2021-12-12T15:46:10"
+    },
+    "com.github.rnairn01.ulauncher-meme-my-text": {
+        "id": "com.github.rnairn01.ulauncher-meme-my-text",
+        "url": "https://github.com/RNairn01/ulauncher-meme-my-text",
+        "updated_at": "2023-02-28T16:06:27.098878",
+        "last_commit": "5d62830a7a92983a731e15645831f53d48dad913",
+        "last_commit_time": "2021-05-07T17:29:22"
+    },
+    "com.github.sergius02.ulauncher-colorconverter": {
+        "id": "com.github.sergius02.ulauncher-colorconverter",
+        "url": "https://github.com/sergius02/ulauncher-colorconverter",
+        "updated_at": "2023-02-28T16:06:28.712996",
+        "last_commit": "2d5e2bc17e89f1f1dc561f73e68ea574e0be844a",
+        "last_commit_time": "2020-12-06T20:59:43"
+    },
+    "com.github.munim.ulauncher-ip-lookup": {
+        "id": "com.github.munim.ulauncher-ip-lookup",
+        "url": "https://github.com/munim/ulauncher-ip-lookup",
+        "updated_at": "2023-02-28T16:06:30.297423",
+        "last_commit": "2c4951a3828f9a8dde79f8bf6345f496c48e612e",
+        "last_commit_time": "2022-03-19T09:33:01"
+    },
+    "com.github.zensoup.ulauncher-unicode": {
+        "id": "com.github.zensoup.ulauncher-unicode",
+        "url": "https://github.com/zensoup/ulauncher-unicode",
+        "updated_at": "2023-02-28T16:06:31.986146",
+        "last_commit": "0ad36c00a888e687b4bfbf76f266f1000040b337",
+        "last_commit_time": "2019-07-11T06:53:31"
+    },
+    "com.github.tjquillan.ulauncher-system": {
+        "id": "com.github.tjquillan.ulauncher-system",
+        "url": "https://github.com/tjquillan/ulauncher-system",
+        "updated_at": "2023-02-28T16:06:33.355675",
+        "last_commit": "667613bf7bb6b4affa4f2121b58589477cd89829",
+        "last_commit_time": "2021-11-08T18:16:55"
+    },
+    "com.github.ulauncher.ulauncher-emoji": {
+        "id": "com.github.ulauncher.ulauncher-emoji",
+        "url": "https://github.com/Ulauncher/ulauncher-emoji",
+        "updated_at": "2023-02-28T16:06:40.267981",
+        "last_commit": "4c6af50d1c9a24d5aad2c597634ff0c634972a5c",
+        "last_commit_time": "2021-08-08T19:19:59"
+    },
+    "com.github.brpaz.ulauncher-file-search": {
+        "id": "com.github.brpaz.ulauncher-file-search",
+        "url": "https://github.com/brpaz/ulauncher-file-search",
+        "updated_at": "2023-02-28T16:06:41.960387",
+        "last_commit": "0ea61c2049b27f1ddfa81d1844876f21dd9d6e7b",
+        "last_commit_time": "2020-07-03T13:30:16"
+    },
+    "com.github.isacikgoz.ukill": {
+        "id": "com.github.isacikgoz.ukill",
+        "url": "https://github.com/isacikgoz/ukill",
+        "updated_at": "2023-02-28T16:06:43.520826",
+        "last_commit": "bc50d9f41d46b6813a5aeebddd15734dcdb9d8db",
+        "last_commit_time": "2019-05-28T18:30:00"
+    }
+}
