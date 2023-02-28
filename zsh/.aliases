@@ -67,3 +67,7 @@ alias hist10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 # Default xclip to use Ctrl-c/Ctrl-v clipboard
 alias xclip="xclip -selection c"
 alias :q="exit"
+
+# Emacs startup
+alias emacs="emacsclient -c -n"
+alias em="emacs"

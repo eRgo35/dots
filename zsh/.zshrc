@@ -56,7 +56,7 @@ zinit ice depth"1"                   ##git clone depth
 zinit light romkatv/powerlevel10k
 
 zinit ice wait lucid
-zinit light MichaelAquilina/zsh-you-should-use
+# zinit light MichaelAquilina/zsh-you-should-use
 
 zinit ice wait lucid
 zinit light laggardkernel/zsh-thefuck
