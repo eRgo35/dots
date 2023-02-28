@@ -85,7 +85,6 @@ telegram-desktop -startintray &
 caffeine >/dev/null 2>&1 &
 
 ## Ulauncher
-sleep 3 ;
 ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &
 
 ## THINKPAD-SPECIFIC 
