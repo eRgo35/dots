@@ -86,7 +86,7 @@ caffeine >/dev/null 2>&1 &
 
 ## Ulauncher
 sleep 3 ;
-ulauncher --hide-window >/dev/null 2>&1 &
+ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &
 
 ## THINKPAD-SPECIFIC 
 hash dockd && dockd --daemon &

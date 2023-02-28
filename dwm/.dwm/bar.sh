@@ -110,6 +110,10 @@ while true; do
 
   # sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
   # sleep 1 && xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  # sleep 1 && xsetroot -name "^c$text^^b$surface0^  $(brightness)  ^b$base^  $(battery)  $(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
-  sleep 1 && xsetroot -name "^c$text^$(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+  if hash dockd 2>/dev/null; then
+    sleep 1 && xsetroot -name "^c$text^^b$surface0^  $(brightness)  ^b$base^  $(battery)  $(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+  else
+    sleep 1 && xsetroot -name "^c$text^$(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+  fi
+
 done
