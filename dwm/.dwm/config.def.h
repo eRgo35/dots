@@ -216,6 +216,7 @@ static const char *tools[] = {"lxappearance"};
 static const char *search[] = {"rofi", "-show", "drun", NULL};
 // static const char *launcha[] = {alttabstart};
 static const char *explorer[] = {"nemo", NULL};
+static const char *locksession[] = {"loginctl", "lock-session", NULL};
 
 #if RENAMED_SCRATCHPADS_PATCH
 static char scratchselfgcolor[]          = "#FFF7D4";
@@ -919,7 +920,7 @@ static const Key keys[] = {
   {0, XF86XK_Search, spawn, {.v = search}},
   {0, XF86XK_LaunchA, alttabstart, {0}},
   {0, XF86XK_Explorer, spawn, {.v = explorer}},
-
+	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH

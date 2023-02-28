@@ -58,13 +58,13 @@ xset s 900 &
 gnome-keyring-daemon &
 
 ## Map super key to trigger rofi when used alone
-xcape -e 'Super_L=Super_L|Shift_L|space' &
+# xcape -e 'Super_L=Super_L|Shift_L|space' &
 
 # wallpapers
 nitrogen --restore &
 
 ## Set screen locker
-xss-lock -v -- betterlockscreen -l &
+xss-lock -v -- betterlockscreen -l --time-format '%I:%M %p' &
 
 ## Desktop portal
 /usr/lib/xdg-desktop-portal-gtk &
