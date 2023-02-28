@@ -72,7 +72,9 @@ battery() {
 }
 
 brightness() {
-  printf "L%.0f%%" $(cat /sys/class/backlight/*/brightness)
+  value=$(cat /sys/class/backlight/*/brightness)
+  percentage=$(echo "scale=2; $value / 8.54" | bc)
+  printf "L%.0f%%" "$percentage"
 }
 
 mem() {
