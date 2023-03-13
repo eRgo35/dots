@@ -35,6 +35,9 @@ xrdb merge .Xresources &
 # compositor
 picom -b --vsync &
 
+# fix android studio interface
+export _JAVA_AWT_WM_NONREPARENTING=1 &
+
 # set keyboard layout
 setxkbmap pl &
 
@@ -79,7 +82,7 @@ flameshot &
 easyeffects --gapplication-service &
 
 ## Telegram daemon
-telegram-desktop -startintray &
+# telegram-desktop -startintray &
 
 ## Caffeine-ng
 caffeine >/dev/null 2>&1 &
