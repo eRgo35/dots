@@ -62,12 +62,12 @@ cpu() {
 }
 
 battery() {
-  # capacity_0="$(cat /sys/class/power_supply/BAT0/capacity)"
-  # capacity_1="$(cat /sys/class/power_supply/BAT1/capacity)"
+  capacity_0="$(cat /sys/class/power_supply/BAT0/capacity)"
+  capacity_1="$(cat /sys/class/power_supply/BAT1/capacity)"
 
+  capacity="$capacity_0+$capacity_1"
   # capacity=$(((capacity_0 + capacity_1) / 2))
-  capacity=100
-  
+
   printf " B$capacity%% "
 }
 
