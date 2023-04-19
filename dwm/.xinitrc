@@ -85,7 +85,7 @@ easyeffects --gapplication-service &
 # telegram-desktop -startintray &
 
 ## Caffeine-ng
-caffeine >/dev/null 2>&1 &
+# caffeine >/dev/null 2>&1 &
 
 ## Ulauncher
 ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &

@@ -920,6 +920,7 @@ static const Key keys[] = {
   {0, XF86XK_Search, spawn, {.v = search}},
   {0, XF86XK_LaunchA, alttabstart, {0}},
   {0, XF86XK_Explorer, spawn, {.v = explorer}},
+	{ MODKEY,                       XK_n,          spawn,                  {.v = explorer} },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
