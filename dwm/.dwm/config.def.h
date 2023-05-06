@@ -864,7 +864,7 @@ static const char *xkb_layouts[]  = {
 #if !NODMENU_PATCH
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
-static const char *rofidruncmd[] = {"rofi", "-show", "drun", NULL};
+static const char *rofidruncmd[] = {"rofi", "-show", "drun", "-modi", "drun,run,window,calc", "-no-show-match", "-no-sort", "-automatic-save-to-history", NULL};
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
@@ -1110,7 +1110,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod5Mask|Mod1Mask,     XK_Tab,        rotatelayoutaxis,       {.i = -4 } },   /* flextile, 4 = secondary stack axis */
 	{ MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 	#endif // FLEXTILE_DELUXE_LAYOUT
-	{ MODKEY|ControlMask,           XK_space,      spawn,                  {.v = rofidruncmd}},
+	{ MODKEY,                       XK_space,      spawn,                  {.v = rofidruncmd}},
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
 	#if MAXIMIZE_PATCH
 	{ MODKEY|ControlMask|ShiftMask, XK_h,          togglehorizontalmax,    {0} },
