@@ -88,7 +88,7 @@ easyeffects --gapplication-service &
 # caffeine >/dev/null 2>&1 &
 
 ## Ulauncher
-ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &
+# ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &
 
 # Emacs Server
 emacs --daemon &
