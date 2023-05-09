@@ -4,13 +4,13 @@
 $HOME/.screenlayout/main.sh
 
 # start some nice programs
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-        # shellcheck source=/dev/null
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
-fi
+# if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+#     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+#         # shellcheck source=/dev/null
+#         [ -x "$f" ] && . "$f"
+#     done
+#     unset f
+# fi
 
 xset -b # disable bell
 
@@ -49,9 +49,9 @@ xset fp rehash &
 fc-cache -fv &
 
 # powersaving options
-# xset s off &
-# xset s noblank &
-# xset s noexpose &
+xset s off &
+xset s noblank &
+xset s noexpose &
 xset c on &
 xset -dpms &
 xset s 900 &
@@ -98,6 +98,10 @@ hash dockd && dockd --daemon &
 
 # status bar
 $HOME/.dwm/bar.sh &
+
+# dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+# . /etc/X11/Xsession
 
 # start dwm
 exec dwm
