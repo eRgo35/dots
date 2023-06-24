@@ -175,7 +175,7 @@ zinit load zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit load 'wfxr/forgit'
 
-zinit snippet ~/.zsh_compl/zoxide
+# zinit snippet ~/.zsh_compl/zoxide
 zinit snippet OMZL::completion.zsh
 
 zinit wait lucid for \
@@ -185,6 +185,8 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
+
+eval "$(zoxide init zsh)"
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zinit pack"binary" for fzf
