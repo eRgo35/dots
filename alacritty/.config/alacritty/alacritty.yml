@@ -1,4 +1,4 @@
-# import:
+import:
   - ~/.config/alacritty/catppuccin-macchiato.yml
 
 scrolling:
