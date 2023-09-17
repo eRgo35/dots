@@ -1,5 +1,6 @@
-import:
+# import:
   - ~/.config/alacritty/catppuccin-macchiato.yml
+
 scrolling:
   history: 100000
 
