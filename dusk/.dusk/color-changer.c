@@ -104,8 +104,8 @@ void applypywal(){
 }
 
 void applyemacs(){
-  char buffer[128];
-  sprintf(buffer, "emacsclient --eval \"  (load-theme '%s)\"", emacstheme);
+  char buffer[256];
+  sprintf(buffer, "emacsclient --eval \"  (progn (setq catppuccin-flavor '%s) (catppuccin-reload))\"", emacstheme);
   system(buffer);
 }
 
@@ -148,7 +148,7 @@ void applydwm(){
 
   /* Apply xresources with the xrdb patch and hte dwmc patch */
   system("xrdb -merge ~/.cache/dusk/xresources");
-  system("~/src/dwm/patch/dwmc xrdb");
+  system("~/.dwm/patch/dwmc xrdb");
 
   /* Change x root window color */
   sprintf(buffer, "xsetroot -solid \"%s\"", bg);
@@ -177,26 +177,26 @@ void changescheme(int color){
   switch (color) {
   case 1: {
     /* light mode */
-    strcpy(fg, LFG);
-    strcpy(bg, LBG);
-    strcpy(cursor, LCURSOR);
-    strcpy(contrast, LCONTRAST);
-    strcpy(black1, LBLACK1);
-    strcpy(black2, LBLACK2);
-    strcpy(red1, LRED1);
-    strcpy(red2, LRED2);
-    strcpy(green1, LGREEN1);
-    strcpy(green2, LGREEN2);
-    strcpy(yellow1, LYELLOW1);
-    strcpy(yellow2, LYELLOW2);
-    strcpy(blue1, LBLUE1);
-    strcpy(blue2, LBLUE2);
-    strcpy(magenta1, LMAGENTA1);
-    strcpy(magenta2, LMAGENTA2);
-    strcpy(cyan1, LCYAN1);
-    strcpy(cyan2, LCYAN2);
-    strcpy(white1, LWHITE1);
-    strcpy(white2, LWHITE2);
+    strcpy(fg, LTEXT);
+    strcpy(bg, LBASE);
+    strcpy(cursor, LTEXT);
+    strcpy(contrast, LGREEN);
+    strcpy(black1, LCRUST);
+    strcpy(black2, LCRUST);
+    strcpy(red1, LRED);
+    strcpy(red2, LRED);
+    strcpy(green1, LGREEN);
+    strcpy(green2, LGREEN);
+    strcpy(yellow1, LYELLOW);
+    strcpy(yellow2, LYELLOW);
+    strcpy(blue1, LBLUE);
+    strcpy(blue2, LBLUE);
+    strcpy(magenta1, LPINK);
+    strcpy(magenta2, LPINK);
+    strcpy(cyan1, LTEAL);
+    strcpy(cyan2, LTEAL);
+    strcpy(white1, LTEXT);
+    strcpy(white2, LTEXT);
     strcpy(emacstheme, LEMACS);
     strcpy(dwmtextbg, LDWMTEXTBG);
     strcpy(dwmtextfg, LDWMTEXTFG);
@@ -216,26 +216,26 @@ void changescheme(int color){
   }
   case 0: {
     /* dark mode */
-    strcpy(fg, DFG);
-    strcpy(bg, DBG);
-    strcpy(cursor, DCURSOR);
-    strcpy(contrast, DCONTRAST);
-    strcpy(black1, DBLACK1);
-    strcpy(black2, DBLACK2);
-    strcpy(red1, DRED1);
-    strcpy(red2, DRED2);
-    strcpy(green1, DGREEN1);
-    strcpy(green2, DGREEN2);
-    strcpy(yellow1, DYELLOW1);
-    strcpy(yellow2, DYELLOW2);
-    strcpy(blue1, DBLUE1);
-    strcpy(blue2, DBLUE2);
-    strcpy(magenta1, DMAGENTA1);
-    strcpy(magenta2, DMAGENTA2);
-    strcpy(cyan1, DCYAN1);
-    strcpy(cyan2, DCYAN2);
-    strcpy(white1, DWHITE1);
-    strcpy(white2, DWHITE2);
+    strcpy(fg, DTEXT);
+    strcpy(bg, DBASE);
+    strcpy(cursor, DTEXT);
+    strcpy(contrast, DBLUE);
+    strcpy(black1, DCRUST);
+    strcpy(black2, DCRUST);
+    strcpy(red1, DRED);
+    strcpy(red2, DRED);
+    strcpy(green1, DGREEN);
+    strcpy(green2, DGREEN);
+    strcpy(yellow1, DYELLOW);
+    strcpy(yellow2, DYELLOW);
+    strcpy(blue1, DBLUE);
+    strcpy(blue2, DBLUE);
+    strcpy(magenta1, DPINK);
+    strcpy(magenta2, DPINK);
+    strcpy(cyan1, DTEAL);
+    strcpy(cyan2, DTEAL);
+    strcpy(white1, DTEXT);
+    strcpy(white2, DTEXT);
     strcpy(emacstheme, DEMACS);
     strcpy(dwmtextbg, DDWMTEXTBG);
     strcpy(dwmtextfg, DDWMTEXTFG);

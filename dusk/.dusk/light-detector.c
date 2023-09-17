@@ -1,3 +1,6 @@
+#include <time.h>
+#include <stdio.h>
+
 /*
   Copyright 2021 Karl Ragnar Giese, karl@giese.no
 
@@ -25,50 +28,67 @@
    smart light switch, use the time, or whatever you want! Just make a function
    called lightvalue which returns an int from 0 to 100. */
 
+// light returned based on camera output
+// int lightvalue(){
+//   double brightness;
 
-int lightvalue(){
-  double brightness;
+//   sd_bus *userbus=NULL;
+//   sd_bus_message *sdbusmessage = NULL;
 
-  sd_bus *userbus=NULL;
-  sd_bus_message *sdbusmessage = NULL;
+//   /* start clight if it isn't running */
+//   if(system("pidof -x clight > /dev/null") != 0){
+//     printf("%s\n", "starting clight");
+//     system("clight --no-gamma --no-dimmer --no-dpms --no-kbd --no-auto-calib &");
+//     sleep(5);
+//   }
 
-  /* start clight if it isn't running */
-  if(system("pidof -x clight > /dev/null") != 0){
-    printf("%s\n", "starting clight");
-    system("clight --no-gamma --no-dimmer --no-dpms --no-kbd --no-auto-calib &");
-    sleep(5);
-  }
+//   /* get user dbus */
+//   sd_bus_default_user(&userbus);
 
-  /* get user dbus */
-  sd_bus_default_user(&userbus);
-
-  /* refresh clight */
-  sd_bus_call_method(userbus,
-                     "org.clight.clight",
-                     "/org/clight/clight",
-                     "org.clight.clight",
-                     "Capture",
-                     NULL,
-                     NULL,
-                     "bb",
-                     "0",
-                     "1");
+//   /* refresh clight */
+//   sd_bus_call_method(userbus,
+//                      "org.clight.clight",
+//                      "/org/clight/clight",
+//                      "org.clight.clight",
+//                      "Capture",
+//                      NULL,
+//                      NULL,
+//                      "bb",
+//                      "0",
+//                      "1");
 
 
-  /* get clight ambient light value */
-  sd_bus_get_property(userbus,
-                      "org.clight.clight",
-                      "/org/clight/clight",
-                      "org.clight.clight",
-                      "AmbientBr",
-                      NULL,
-                      &sdbusmessage,
-                      "d");
+//   /* get clight ambient light value */
+//   sd_bus_get_property(userbus,
+//                       "org.clight.clight",
+//                       "/org/clight/clight",
+//                       "org.clight.clight",
+//                       "AmbientBr",
+//                       NULL,
+//                       &sdbusmessage,
+//                       "d");
 
-  sd_bus_message_read(sdbusmessage, "d", &brightness);
+//   sd_bus_message_read(sdbusmessage, "d", &brightness);
 
-  sd_bus_message_unref(sdbusmessage);
-  sd_bus_unref(userbus);
+//   sd_bus_message_unref(sdbusmessage);
+//   sd_bus_unref(userbus);
 
-  return brightness * 100;       /* return brightness as int from 0-100 */
+//   return brightness * 100;       /* return brightness as int from 0-100 */
+// }
+
+int lightvalue() {
+  int brightness = 0;
+
+  time_t rawtime;
+  struct tm * timeinfo;
+
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  if (timeinfo->tm_hour > 6 && timeinfo->tm_hour < 19)
+    brightness = 100;
+
+  printf("[%02d:%02d:%02d] ", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+
+  return brightness;
 }

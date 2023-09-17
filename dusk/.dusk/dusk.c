@@ -38,7 +38,10 @@ int main(int argc, char *argv[]) {
 
   if (argc == 1) {              /* Automatically change themes when no argument is given */
 
-    changescheme(1);            /* Start with light theme as default */
+    if (lightvalue() > 50)
+      changescheme(1);            /* Start with light theme if brightness higher than 50 */
+    else
+      changescheme(0);
 
     for(;;){
       light=lightvalue();       /* Get ambient light */
