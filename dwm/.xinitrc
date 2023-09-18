@@ -94,6 +94,15 @@ easyeffects --gapplication-service &
 # Emacs Server
 emacs --daemon &
 
+# Theme changing service
+xsettingsd &
+
+# Theming service
+dusk &
+
+# Alacritty config
+$HOME/.config/alacritty/theme-patcher.sh &
+
 ## THINKPAD-SPECIFIC 
 hash dockd && dockd --daemon &
 

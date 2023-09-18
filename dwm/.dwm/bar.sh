@@ -1,41 +1,40 @@
 #!/bin/bash
 
-# ^c$var^ = fg color
-# ^b$var^ = bg color
-
 interval=0
 
 # load colors
 # . ~/.config/bar_themes/onedark
 
-# colors
+# dusk color palette path
+dusk=$HOME/.cache/dusk/pywal
 
-rosewater=#f4dbd6
-flamingo=#f0c6c6
-pink=#f5bde6
-mauve=#c6a0f6
-red=#ed8796
-maroon=#ee99a0
-peach=#f5a97f
-yellow=#eed49f
-green=#a6da95
-teal=#8bd5ca
-sky=#91d7e3
-sapphire=#7dc4e4
-blue=#8aadf4
-lavender=#b7bdf8
-text=#cad3f5
-subtext1=#b8c0e0
-subtext0=#a5adcb
-overlay2=#939ab7
-overlay1=#8087a2
-overlay0=#6e738d
-surface2=#5b6078
-surface1=#494d64
-surface0=#363a4f
-base=#24273a
-mantle=#1e2030
-crust=#181926
+# colors
+rosewater=$(jq -r '.colors.color16' $dusk)
+flamingo=$(jq -r '.colors.color17' $dusk)
+pink=$(jq -r '.colors.color18' $dusk)
+mauve=$(jq -r '.colors.color19' $dusk)
+maroon=$(jq -r '.colors.color20' $dusk)
+red=$(jq -r '.colors.color21' $dusk)
+peach=$(jq -r '.colors.color22' $dusk)
+yellow=$(jq -r '.colors.color23' $dusk)
+green=$(jq -r '.colors.color24' $dusk)
+teal=$(jq -r '.colors.color25' $dusk)
+sky=$(jq -r '.colors.color26' $dusk)
+sapphire=$(jq -r '.colors.color27' $dusk)
+blue=$(jq -r '.colors.color28' $dusk)
+lavender=$(jq -r '.colors.color29' $dusk)
+text=$(jq -r '.colors.color30' $dusk)
+subtext1=$(jq -r '.colors.color31' $dusk)
+subtext0=$(jq -r '.colors.color32' $dusk)
+overlay2=$(jq -r '.colors.color33' $dusk)
+overlay1=$(jq -r '.colors.color34' $dusk)
+overlay0=$(jq -r '.colors.color35' $dusk)
+surface2=$(jq -r '.colors.color36' $dusk)
+surface1=$(jq -r '.colors.color37' $dusk)
+surface0=$(jq -r '.colors.color38' $dusk)
+base=$(jq -r '.colors.color39' $dusk)
+mantle=$(jq -r '.colors.color40' $dusk)
+crust=$(jq -r '.colors.color41' $dusk)
 
 pulse () {
   VOL=$(pamixer --get-volume)

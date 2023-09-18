@@ -41,6 +41,35 @@ char cyan1[8];
 char cyan2[8];
 char white1[8];
 char white2[8];
+
+// new colors
+char rosewater[8];
+char flamingo[8];
+char pink[8];
+char mauve[8];
+char red[8];
+char maroon[8];
+char peach[8];
+char yellow[8];
+char green[8];
+char teal[8];
+char sky[8];
+char sapphire[8];
+char blue[8];
+char lavender[8];
+char text[8];
+char subtext1[8];
+char subtext0[8];
+char overlay2[8];
+char overlay1[8];
+char overlay0[8];
+char surface2[8];
+char surface1[8];
+char surface0[8];
+char base[8];
+char mantle[8];
+char crust[8];
+
 char emacstheme[64];
 char dwmtextbg[8];
 char dwmtextfg[8];
@@ -88,6 +117,34 @@ void applypywal(){
   cJSON_AddStringToObject(colors, "color13", magenta2);
   cJSON_AddStringToObject(colors, "color14", cyan2);
   cJSON_AddStringToObject(colors, "color15", white2);
+
+  // aditional catppuccin colors
+  cJSON_AddStringToObject(colors, "color16", rosewater);
+  cJSON_AddStringToObject(colors, "color17", flamingo);
+  cJSON_AddStringToObject(colors, "color18", pink);
+  cJSON_AddStringToObject(colors, "color19", mauve);
+  cJSON_AddStringToObject(colors, "color20", red);
+  cJSON_AddStringToObject(colors, "color21", maroon);
+  cJSON_AddStringToObject(colors, "color22", peach);
+  cJSON_AddStringToObject(colors, "color23", yellow);
+  cJSON_AddStringToObject(colors, "color24", green);
+  cJSON_AddStringToObject(colors, "color25", teal);
+  cJSON_AddStringToObject(colors, "color26", sky);
+  cJSON_AddStringToObject(colors, "color27", sapphire);
+  cJSON_AddStringToObject(colors, "color28", blue);
+  cJSON_AddStringToObject(colors, "color29", lavender);
+  cJSON_AddStringToObject(colors, "color30", text);
+  cJSON_AddStringToObject(colors, "color31", subtext1);
+  cJSON_AddStringToObject(colors, "color32", subtext0);
+  cJSON_AddStringToObject(colors, "color33", overlay2);
+  cJSON_AddStringToObject(colors, "color34", overlay1);
+  cJSON_AddStringToObject(colors, "color35", overlay0);
+  cJSON_AddStringToObject(colors, "color36", surface2);
+  cJSON_AddStringToObject(colors, "color37", surface1);
+  cJSON_AddStringToObject(colors, "color38", surface0);
+  cJSON_AddStringToObject(colors, "color39", base);
+  cJSON_AddStringToObject(colors, "color40", mantle);
+  cJSON_AddStringToObject(colors, "color41", crust);
 
   /* Write JSON */
   sprintf(buffer, "%s/.cache/dusk/pywal", getenv("HOME"));
@@ -151,8 +208,12 @@ void applydwm(){
   system("~/.dwm/patch/dwmc xrdb");
 
   /* Change x root window color */
-  sprintf(buffer, "xsetroot -solid \"%s\"", bg);
-  system(buffer);
+  system("pkill bar.sh");
+  system("~/.dwm/bar.sh &");
+
+  /* Change alacritty and rofi themes */
+  system("~/.config/alacritty/theme-patcher.sh &");
+  system("~/.config/rofi/theme-patcher.sh &");
 }
 
 void applygtk(){
@@ -181,6 +242,7 @@ void changescheme(int color){
     strcpy(bg, LBASE);
     strcpy(cursor, LTEXT);
     strcpy(contrast, LGREEN);
+    
     strcpy(black1, LCRUST);
     strcpy(black2, LCRUST);
     strcpy(red1, LRED);
@@ -197,6 +259,43 @@ void changescheme(int color){
     strcpy(cyan2, LTEAL);
     strcpy(white1, LTEXT);
     strcpy(white2, LTEXT);
+
+    /* Colors */
+    strcpy(rosewater, LROSEWATER);
+    strcpy(flamingo, LFLAMINGO);
+    strcpy(pink, LPINK);
+    strcpy(mauve, LMAUVE);
+    strcpy(red, LRED);
+    strcpy(maroon, LMAROON);
+    strcpy(peach, LPEACH);
+    strcpy(yellow, LYELLOW);
+    strcpy(green, LGREEN);
+    strcpy(teal, LTEAL);
+    strcpy(sky, LSKY);
+    strcpy(sapphire, LSAPPHIRE);
+    strcpy(blue, LBLUE);
+    strcpy(lavender, LLAVENDER);
+
+    /* Text and subtext colors */
+    strcpy(text, LTEXT);
+    strcpy(subtext1, LSUBTEXT1);
+    strcpy(subtext0, LSUBTEXT0);
+
+    /* Overlay colors */
+    strcpy(overlay2, LOVERLAY2);
+    strcpy(overlay1, LOVERLAY1);
+    strcpy(overlay0, LOVERLAY0);
+
+    /* Surface colors */
+    strcpy(surface2, LSURFACE2);
+    strcpy(surface1, LSURFACE1);
+    strcpy(surface0, LSURFACE0);
+
+    /* Base, mantle, and crust colors */
+    strcpy(base, LBASE);
+    strcpy(mantle, LMANTLE);
+    strcpy(crust, LCRUST);
+
     strcpy(emacstheme, LEMACS);
     strcpy(dwmtextbg, LDWMTEXTBG);
     strcpy(dwmtextfg, LDWMTEXTFG);
@@ -236,6 +335,43 @@ void changescheme(int color){
     strcpy(cyan2, DTEAL);
     strcpy(white1, DTEXT);
     strcpy(white2, DTEXT);
+
+    /* Colors */
+    strcpy(rosewater, DROSEWATER);
+    strcpy(flamingo, DFLAMINGO);
+    strcpy(pink, DPINK);
+    strcpy(mauve, DMAUVE);
+    strcpy(red, DRED);
+    strcpy(maroon, DMAROON);
+    strcpy(peach, DPEACH);
+    strcpy(yellow, DYELLOW);
+    strcpy(green, DGREEN);
+    strcpy(teal, DTEAL);
+    strcpy(sky, DSKY);
+    strcpy(sapphire, DSAPPHIRE);
+    strcpy(blue, DBLUE);
+    strcpy(lavender, DLAVENDER);
+
+    /* Text and subtext colors */
+    strcpy(text, DTEXT);
+    strcpy(subtext1, DSUBTEXT1);
+    strcpy(subtext0, DSUBTEXT0);
+
+    /* Overlay colors */
+    strcpy(overlay2, DOVERLAY2);
+    strcpy(overlay1, DOVERLAY1);
+    strcpy(overlay0, DOVERLAY0);
+
+    /* Surface colors */
+    strcpy(surface2, DSURFACE2);
+    strcpy(surface1, DSURFACE1);
+    strcpy(surface0, DSURFACE0);
+
+    /* Base, mantle, and crust colors */
+    strcpy(base, DBASE);
+    strcpy(mantle, DMANTLE);
+    strcpy(crust, DCRUST);
+
     strcpy(emacstheme, DEMACS);
     strcpy(dwmtextbg, DDWMTEXTBG);
     strcpy(dwmtextfg, DDWMTEXTFG);

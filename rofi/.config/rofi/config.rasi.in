@@ -15,4 +15,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin-macchiato"
+@theme "catppuccin-%s%"
