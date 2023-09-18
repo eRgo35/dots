@@ -1,39 +1,5 @@
-# import:
-#   - ~/.config/alacritty/dynamic-theme.yml
-
-# Colors
-colors:
-  # Default colors
-  primary:
-    background: '0x24273a'
-    foreground: '0xcad3f5'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
-
-  # Normal colors
-  normal:
-    black:   '0x181926'
-    red:     '0xed8796'
-    green:   '0xa6da95'
-    yellow:  '0xeed49f'
-    blue:    '0x8aadf4'
-    magenta: '0xf5bde6'
-    cyan:    '0x8bd5ca'
-    white:   '0xcad3f5'
-
-  # Bright colors
-  bright:
-    black:   '0x181926'
-    red:     '0xed8796'
-    green:   '0xa6da95'
-    yellow:  '0xeed49f'
-    blue:    '0x8aadf4'
-    magenta: '0xf5bde6'
-    cyan:    '0x8bd5ca'
-    white:   '0xcad3f5'
+import:
+  - ~/.config/alacritty/catppuccin-macchiato.yml
 
 scrolling:
   history: 100000

@@ -11,8 +11,8 @@ echo "Note: This script is semi-automatic. User interaction may be required to c
 sleep 5
  
 # working dir
-mkdir -pv lazarus-tmp
-cd lazarus-tmp
+mkdir -pv ~/lazarus-tmp
+cd ~/lazarus-tmp
 
 # paru package manager setup
 echo "Installing paru"
