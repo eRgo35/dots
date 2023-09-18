@@ -9,3 +9,6 @@
 [submodule "desktop/.st"]
 	path = desktop/.st
 	url = https://github.com/eRgo35/st
+[submodule "desktop/.dusk"]
+	path = desktop/.dusk
+	url = https://github.com/eRgo35/dusk
