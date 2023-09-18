@@ -1,3 +1,11 @@
 [submodule "desktop/.dwm"]
 	path = desktop/.dwm
 	url = https://github.com/eRgo35/dwm
+
+[submodule "desktop/.dmenu"]
+	path = desktop/.dmenu
+	url = https://github.com/eRgo35/dmenu
+
+[submodule "desktop/.st"]
+	path = desktop/.st
+	url = https://github.com/eRgo35/st
