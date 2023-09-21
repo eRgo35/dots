@@ -30,7 +30,7 @@ fi
 # some merges
 xsetroot -cursor_name left_ptr &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
-xrdb merge .Xresources &
+# xrdb merge .Xresources &
 
 # compositor
 picom -b --vsync &
@@ -64,8 +64,10 @@ source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 ## Map super key to trigger rofi when used alone
 # xcape -e 'Super_L=Super_L|Shift_L|space' &
 
-# wallpapers
-nitrogen --restore &
+# wallpaper engine and theming
+# nitrogen --restore &
+wal --backend colorz -i $HOME/.dots/nitrogen/.config/nitrogen/pexels-engin-akyurt-1435752.jpg &
+xrdb merge ~/.cache/wal/colors.Xresources &
 
 ## Set screen locker
 xss-lock -v -- betterlockscreen -l --time-format '%I:%M %p' &

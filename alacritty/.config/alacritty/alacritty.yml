@@ -105,7 +105,7 @@ bell:
 
     # command:
     # program: aplay
-    # args: ["/home/vectorkappa/Music/beeps/wav/erro.wav"]
+    # args: ["/home/mike/Music/beeps/wav/erro.wav"]
 hints:
     # URL launcher
     #
