@@ -33,7 +33,6 @@ echo "Installing additional software (this may take a long time!)"
 
 paru -S \
 adobe-source-code-pro-fonts \
-alacritty \
 bat \
 betterlockscreen \
 calf \
@@ -63,6 +62,7 @@ helvum \
 jq \
 json-c \
 json-glib \
+kitty \
 kleopatra \
 kvantum \
 less \
@@ -170,3 +170,46 @@ xss-lock \
 zoxide \
 zsh
 
+# stowing
+echo "Stowing dotfiles"
+
+cd $HOME/.dots
+
+stow alacritty
+stow bash
+stow bat
+stow common
+stow desktop
+stow dunst
+stow feh
+stow gtk
+stow htop
+stow kitty
+stow kvantum
+stow libvirt
+stow neofetch
+stow nitrogen
+stow picom
+stow rofi
+stow wal
+stow zsh
+
+# compiling desktop environment
+echo "Compiling desktop environment"
+
+cd $HOME/.dwm
+sudo make clean install
+
+cd $HOME/.dmenu
+sudo make clean install
+
+cd $HOME/.st
+sudo make clean install
+
+# disable lightdm
+echo "Disable lightdm (setup uses .xinitrc)"
+
+sudo systemctl disable lightdm.service
+
+echo "Setup complete!"
+echo "Please reboot your computer for changes to apply"

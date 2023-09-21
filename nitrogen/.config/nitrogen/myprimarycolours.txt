@@ -1,4 +1,0 @@
-'/home/mike/.dots/nitrogen/.config/nitrogen/pexels-skyler-ewing-5228890.jpg\'#A5BFC3#C0C8C6#A7B5B4#9D7055#322C2B
-'/home/mike/.dots/nitrogen/.config/nitrogen/cat-waves.png\'#1E1E2E#242436#43455E#707DA0#B6BEF2
-'/home/mike/.dots/nitrogen/.config/nitrogen/pexels-engin-akyurt-1435752.jpg\'#017898#0486A2#2FB7D6#028CAC#9FDCE9
-'/home/mike/.dots/nitrogen/.config/nitrogen/z3in53x1r1d81.png\'#615D71#CCA2B4#302D41#1A1927
