@@ -1,0 +1,51 @@
+#!/bin/bash
+
+export PATH="${PATH}:${HOME}/.local/bin/"
+
+dir="$HOME/.config/rofi/launchers/type-1"
+rofitheme='style-1'
+
+themes=$HOME/.dots/theme
+option="$(ls $themes | rofi -dmenu -i -p "  Select theme: " -theme ${dir}/${rofitheme}.rasi)"
+theme=$themes/$option
+
+if [[ -d $themes/$option ]]; then
+    echo "$themes/$option is a directory"
+    exit 1
+elif [[ -f $themes/$option ]]; then
+    echo "$themes/$option is a file"
+    . $themes/$option
+else
+    echo "$themes/$option is not valid"
+    exit 1
+fi
+
+source ~/.colormode
+
+wallight=""
+gtktheme=Macchiato
+gtktype=dark
+
+if [[ $isLight -eq 1 ]]; then
+    wallight="-l"
+    gtktheme=Latte
+    gtktype=light
+fi
+
+wal $wallight -i "$(cat $HOME/.cache/wal/wal)" --cols16
+# pywalfox update
+pywal-discord -t default
+wal-telegram --wal
+
+. $HOME/.config/mako/update-colors.sh
+. $HOME/.config/spicetify/Themes/Pywal/update-colors.sh
+. $HOME/.config/cava/scripts/update-colors.sh
+
+echo "Net/ThemeName \"Catppuccin-$gtktheme-Standard-Blue-$gtktype\"" > $HOME/.xsettingsd
+killall -HUP xsettingsd
+xsettingsd &
+
+kill -HUP $(pgrep -f 'bar.sh')
+bash $HOME/.cache/wal/bar.sh & disown
+
+killall -HUP dwm

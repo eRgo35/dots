@@ -12,27 +12,27 @@
     --wallpaper: url("/home/mike/Wallpapers/bigsur.jpeg");
 
     /* Special */
-    --background: #0b0c16;
-    --foreground: #c2c2c4;
-    --cursor: #c2c2c4;
+    --background: #f5f5f8;
+    --foreground: #3d3d3e;
+    --cursor: #3d3d3e;
 
     /* Colors */
-    --color0: #0b0c16;
+    --color0: #f5f5f8;
     --color1: #0c5484;
     --color2: #3f3969;
     --color3: #7a2761;
     --color4: #1b618d;
     --color5: #216b98;
     --color6: #3e81ab;
-    --color7: #85858a;
-    --color8: #484850;
+    --color7: #7a7a7c;
+    --color8: #b7b7ba;
     --color9: #1171B0;
     --color10: #554D8D;
     --color11: #A33582;
     --color12: #2482BC;
     --color13: #2D8FCB;
     --color14: #53ACE4;
-    --color15: #c2c2c4;
+    --color15: #3d3d3e;
 }
 /**  colors will come from .cache/wal/colors.css as variables defined in :root
  *  see: cat $HOME/.cache/wal/colors.css

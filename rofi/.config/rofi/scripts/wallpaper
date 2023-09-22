@@ -24,13 +24,32 @@ fi
 # swww img $wallpaper --transition-type grow --transition-fps 60 --transition-duration 1.0 --transition-bezier 0.65,0,0.35,1 --transition-step 255
 feh --bg-fill $wallpaper
 
-wal -i $wallpaper --cols16
-pywalfox update
+source ~/.colormode
+
+wallight=""
+gtktheme=Macchiato
+gtktype=dark
+
+if [[ $isLight -eq 1 ]]; then
+    wallight="-l"
+    gtktheme=Latte
+    gtktype=light
+fi
+
+wal $wallight -i $wallpaper --cols16
+# pywalfox update
 pywal-discord -t default
 wal-telegram --wal
-
-kill -HUP $(pgrep dwm)
 
 . $HOME/.config/mako/update-colors.sh
 . $HOME/.config/spicetify/Themes/Pywal/update-colors.sh
 . $HOME/.config/cava/scripts/update-colors.sh
+
+echo "Net/ThemeName \"Catppuccin-$gtktheme-Standard-Blue-$gtktype\"" > $HOME/.xsettingsd
+killall -HUP xsettingsd
+xsettingsd &
+
+kill -HUP $(pgrep -f 'bar.sh')
+bash $HOME/.cache/wal/bar.sh & disown
+
+killall -HUP dwm

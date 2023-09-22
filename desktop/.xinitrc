@@ -110,7 +110,7 @@ xsettingsd &
 hash dockd && dockd --daemon &
 
 # status bar
-$HOME/.dwm/bar.sh &
+bash $HOME/.cache/wal/bar.sh & disown
 
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 

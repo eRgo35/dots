@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "dark"
+echo "isLight=0" > ~/.colormode
