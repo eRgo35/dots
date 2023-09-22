@@ -68,7 +68,7 @@ source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 # nitrogen --restore &
 # wal --backend colorz -i $HOME/.dots/nitrogen/.config/nitrogen/pexels-engin-akyurt-1435752.jpg &
 . ~/.fehbg &
-xrdb merge ~/.cache/wal/colors.Xresources &
+xrdb -merge ~/.cache/wal/colors.Xresources 
 
 ## Set screen locker
 xss-lock -v -- betterlockscreen -l --time-format '%I:%M %p' &
