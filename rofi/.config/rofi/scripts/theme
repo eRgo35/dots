@@ -24,21 +24,21 @@ source ~/.colormode
 
 wallight=""
 gtktheme=Macchiato
-gtktype=dark
+gtktype=Dark
 
 if [[ $isLight -eq 1 ]]; then
     wallight="-l"
     gtktheme=Latte
-    gtktype=light
+    gtktype=Light
 fi
 
 wal $wallight -i "$(cat $HOME/.cache/wal/wal)" --cols16
 # pywalfox update
-pywal-discord -t default
+# pywal-discord -t default
 wal-telegram --wal
 
 . $HOME/.config/mako/update-colors.sh
-. $HOME/.config/spicetify/Themes/Pywal/update-colors.sh
+. $HOME/.config/spicetify/Themes/Pywal/update-colors.sh &
 . $HOME/.config/cava/scripts/update-colors.sh
 
 echo "Net/ThemeName \"Catppuccin-$gtktheme-Standard-Blue-$gtktype\"" > $HOME/.xsettingsd
