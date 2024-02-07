@@ -14,18 +14,26 @@ $HOME/.screenlayout/main.sh
 
 xset -b # disable bell
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # ssh agent setup
-eval `/usr/bin/ssh-agent`
+#eval `/usr/bin/ssh-agent`
+#
+#if test -f /usr/lib/openssh/x11-ssh-askpass # Archlinux
+#then
+#	SSH_ASKPASS=/usr/lib/openssh/x11-ssh-askpass ssh-add < /dev/null
+#fi
+#
+#if test -f /usr/lib/ssh/x11-ssh-askpass # Debian
+#then
+#	SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add < /dev/null
+#fi
 
-if test -f /usr/lib/openssh/x11-ssh-askpass # Archlinux
-then
-	SSH_ASKPASS=/usr/lib/openssh/x11-ssh-askpass ssh-add < /dev/null
-fi
-
-if test -f /usr/lib/ssh/x11-ssh-askpass # Debian
-then
-	SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add < /dev/null
-fi
+# IMF configuration (fcitx5)
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export GLFW_IM_MODULE=ibus
 
 # some merges
 xsetroot -cursor_name left_ptr &
@@ -40,6 +48,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1 &
 
 # set keyboard layout
 setxkbmap pl &
+# IMF daemon
+fcitx5 -d &
 
 # enable local fonts in .fonts directory
 xset +fp /usr/share/fonts/local &
@@ -95,7 +105,7 @@ easyeffects --gapplication-service &
 # ulauncher --hide-window --no-window-shadow >/dev/null 2>&1 &
 
 # Emacs Server
-emacs --daemon &
+# emacs --daemon &
 
 # Theme changing service
 xsettingsd &
@@ -107,7 +117,7 @@ xsettingsd &
 # $HOME/.config/alacritty/theme-patcher.sh &
 
 ## THINKPAD-SPECIFIC 
-hash dockd && dockd --daemon &
+#hash dockd && dockd --daemon &
 
 # status bar
 bash $HOME/.cache/wal/bar.sh & disown
@@ -115,6 +125,8 @@ bash $HOME/.cache/wal/bar.sh & disown
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # . /etc/X11/Xsession
+
+# redshift &
 
 # start dwm
 exec dwm
