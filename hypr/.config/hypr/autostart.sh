@@ -5,7 +5,6 @@ hyprpaper & disown
 /usr/lib/polkit-kde-authentication-agent-1 &
 dunst &
 fcitx5 -d &
-flameshot &
 easyeffects --gapplication-service &
 
 $HOME/.config/waybar/launcher.sh &
