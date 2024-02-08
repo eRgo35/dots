@@ -1,1 +1,3 @@
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx -- vt1 &> /dev/null
+if [ "$(tty)" = "/dev/tty1" ];then
+	exec Hyprland
+fi
