@@ -1,8 +1,10 @@
 [user]
-  email = mike@c2yz.com
-  name = Michael Czyż
-  signingkey = 78D4829A477DAB25
+	email = mike@c2yz.com
+	name = Michael Czyż
+	signingkey = 78D4829A477DAB25
 [commit]
-  gpgsign = true
+	gpgsign = true
 [push]
-  default = simple
+	default = simple
+[rerere]
+	enabled = true
