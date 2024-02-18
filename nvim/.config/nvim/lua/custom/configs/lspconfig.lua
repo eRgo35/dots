@@ -14,6 +14,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.svelte.setup{}
+
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
   capabilities = capabilities,

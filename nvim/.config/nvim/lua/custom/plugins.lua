@@ -63,6 +63,18 @@ local plugins = {
   },
 
   {
+    "othree/html5.vim",
+  },
+
+  {
+    "pangloss/vim-javascript",
+  },
+
+  {
+    "evanleck/vim-svelte",
+  },
+
+  {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
     config = function()
