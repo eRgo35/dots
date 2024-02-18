@@ -8,3 +8,9 @@
 	default = simple
 [rerere]
 	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[maintenance]
+	repo = /home/mike/.dots
