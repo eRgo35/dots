@@ -1,8 +1,9 @@
 export QT_STYLE_OVERRIDE="kvantum";
 
 # Defaults
+export TERM="kitty";
 export TERMINAL="kitty";
-export EDITOR='lvim';
+export EDITOR='vim';
 export BROWSER='firefox';
 
 export BAT_THEME="Catppuccin-mocha";

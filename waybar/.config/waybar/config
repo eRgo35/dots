@@ -51,9 +51,9 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M %p}",
+        "format": "{:%a %b-%d %I:%M %p}",
         "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d %H:%M %Z}"
     },
     "cpu": {
         "format": "{usage}% ",

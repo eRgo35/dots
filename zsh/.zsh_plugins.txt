@@ -1,5 +1,4 @@
 romkatv/powerlevel10k
-rupa/z
 
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/extract

@@ -1,0 +1,5 @@
+vsync = true
+
+[font]
+normal = ["FiraCode Nerd Font"]
+size = 15
