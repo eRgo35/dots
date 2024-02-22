@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+remote="dummy"
+
+case $1 in
+  "c2yz.com") remote="c2yz";;
+  "eu.c2yz.com") remote="c2yz-eu";;
+  "thor.c2yz.com" || "192.168.0.11" || "192.168.0.12") remote="thor";;
+  "home.c2yz.com" || "192.168.0.200") remote "home";;
+  *) remote=$(echo $1 | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]')
+esac
+
+echo "Unmounting $1 from: $HOME/remotes/$remote";
+
+fusermount -u $HOME/remotes/$1

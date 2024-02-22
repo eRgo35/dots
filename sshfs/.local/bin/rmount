@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+remote="dummy"
+
+case $1 in
+  "c2yz.com") remote="c2yz";;
+  "eu.c2yz.com") remote="c2yz-eu";;
+  "thor.c2yz.com" || "192.168.0.11" || "192.168.0.12") remote="thor";;
+  "home.c2yz.com" || "192.168.0.200") remote "home";;
+  *) remote=$(echo $1 | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]')
+esac
+
+echo "Mounting $1 to: $HOME/remotes/$remote";
+
+mkdir -p $HOME/remotes/$remote;
+
+sshfs -o idmap=user $USER@$1:/home/$USER $HOME/remotes/$remote 
