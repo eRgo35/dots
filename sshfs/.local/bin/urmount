@@ -12,4 +12,4 @@ esac
 
 echo "Unmounting $1 from: $HOME/remotes/$remote";
 
-fusermount -u $HOME/remotes/$1
+fusermount -u $HOME/remotes/$remote
