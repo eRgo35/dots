@@ -1,0 +1,2 @@
+pactl load-module module-rtp-send source=rtp.monitor destination_ip=192.168.0.11
+pactl load-module module-null-sink sink_name=rtp sink_properties="device.description='RTP'"
