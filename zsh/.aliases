@@ -72,3 +72,5 @@ alias :q="exit"
 alias emacs="emacsclient -c -n"
 alias em="emacs"
 alias vim="nvim"
+
+alias gua="git remote | xargs -L1 git push --all"
