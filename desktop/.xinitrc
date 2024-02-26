@@ -108,7 +108,7 @@ easyeffects --gapplication-service &
 # emacs --daemon &
 
 # Theme changing service
-xsettingsd &
+# xsettingsd &
 
 # Theming service
 # dusk &
@@ -120,7 +120,7 @@ xsettingsd &
 #hash dockd && dockd --daemon &
 
 # status bar
-bash $HOME/.cache/wal/bar.sh & disown
+bash $HOME/.dwm/bar.sh & disown
 
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
