@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # screenlayout setup for odin
-$HOME/.screenlayout/main.sh
+$HOME/.config/screenlayout/main.sh
 
 # start some nice programs
 # if [ -d /etc/X11/xinit/xinitrc.d ] ; then
@@ -37,7 +37,6 @@ export GLFW_IM_MODULE=ibus
 
 # some merges
 xsetroot -cursor_name left_ptr &
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 # xrdb merge .Xresources &
 
 # compositor
@@ -78,7 +77,7 @@ source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 # nitrogen --restore &
 # wal --backend colorz -i $HOME/.dots/nitrogen/.config/nitrogen/pexels-engin-akyurt-1435752.jpg &
 . ~/.fehbg &
-xrdb -merge ~/.cache/wal/colors.Xresources 
+xrdb -merge ~/.config/.Xresources 
 
 ## Set screen locker
 xss-lock -v -- betterlockscreen -l --time-format '%I:%M %p' &
@@ -120,7 +119,7 @@ easyeffects --gapplication-service &
 #hash dockd && dockd --daemon &
 
 # status bar
-bash $HOME/.dwm/bar.sh & disown
+bash $HOME/.config/dwm/bar.sh & disown
 
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 

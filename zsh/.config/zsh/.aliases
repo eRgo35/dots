@@ -74,3 +74,5 @@ alias em="emacs"
 alias vim="nvim"
 
 alias gua="git remote | xargs -L1 git push --all"
+
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'

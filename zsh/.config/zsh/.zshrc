@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.config/zsh/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt extendedglob
@@ -14,7 +14,7 @@ unsetopt autocd beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/mike/.zshrc'
+zstyle :compinstall filename '/home/mike/.config/zsh/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -23,7 +23,7 @@ _comp_options+=(globdots)
 
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
-source ~/.aliases
+source ~/.config/zsh/.aliases
 
 # vi mode
 bindkey -v
@@ -179,4 +179,4 @@ fi
 eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
