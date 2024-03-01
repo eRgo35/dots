@@ -58,11 +58,15 @@ xset fp rehash &
 fc-cache -fv &
 
 # powersaving options
-xset s off &
-xset s noblank &
-xset s noexpose &
-xset c on &
-xset -dpms &
+# xset s off &
+# xset s noblank &
+# xset s noexpose &
+# xset s on &
+# xset -dpms &
+# xset s 900 &
+xset +dpms &
+xset dpms 1200 1800 2100 &
+xset s on &
 xset s 900 &
 
 # auths
