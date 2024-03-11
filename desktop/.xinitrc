@@ -29,6 +29,11 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 #	SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add < /dev/null
 #fi
 
+# theming
+export QT_QPA_PLATFORMTHEME=qt5ct
+export DESKTOP_SESSION=plasma
+export XDG_CURRENT_DESKTOP=dwm
+
 # IMF configuration (fcitx5)
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
