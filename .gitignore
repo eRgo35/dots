@@ -5,3 +5,5 @@ dwm/.dwm/dwm
 dwm/.dwm/drw.o
 ulauncher/.config/ulauncher/ext_preferences
 spicetify/.config/spicetify/Extracted
+.zcompdump
+.zcompcache

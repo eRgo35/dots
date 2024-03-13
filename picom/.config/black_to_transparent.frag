@@ -17,6 +17,6 @@ vec4 window_shader() {
 	if (invert_color)
 		c = vec4(vec3(c.a, c.a, c.a) - vec3(c), c.a);
 	c *= opacity;
-	vec4 default_post_processing(vec4 c);
+	// vec4 default_post_processing(vec4 c);
 	return c;
 }
