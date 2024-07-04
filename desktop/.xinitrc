@@ -53,7 +53,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1 &
 # set keyboard layout
 setxkbmap pl &
 # IMF daemon
-fcitx5 -d &
+# fcitx5 -d &
 
 # enable local fonts in .fonts directory
 xset +fp /usr/share/fonts/local &
